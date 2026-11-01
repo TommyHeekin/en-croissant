@@ -1,20 +1,25 @@
 import { Box } from "@mantine/core";
+import { IconStarFilled } from "@tabler/icons-react";
 import type { Color, Square } from "chessops";
 import type { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 import { ANNOTATION_INFO, type Annotation } from "@/utils/annotation";
 import { squareToCoordinates } from "@/utils/chessops";
 
 export default function AnnotationHint({
   square,
   annotation,
+  bestMove = false,
   orientation,
 }: {
   square: Square;
-  annotation: Annotation;
+  annotation?: Annotation;
+  bestMove?: boolean;
   orientation: Color;
 }) {
+  const { t } = useTranslation();
   const { file, rank } = squareToCoordinates(square, orientation);
-  const color = ANNOTATION_INFO[annotation]?.color || "gray";
+  const color = bestMove ? "green" : ANNOTATION_INFO[annotation ?? ""]?.color || "gray";
 
   return (
     <Box
@@ -42,15 +47,24 @@ export default function AnnotationHint({
             bg={color}
             variant="filled"
           >
-            <svg viewBox="0 0 100 100">
-              <title>{annotation}</title>
-              <defs>
-                <filter id="shadow">
-                  <feDropShadow dx="0" dy="1" floodOpacity="0.3" stdDeviation="0" />
-                </filter>
-              </defs>
-              <g>{glyphToSvg[annotation]}</g>
-            </svg>
+            {bestMove ? (
+              <IconStarFilled
+                size="75%"
+                color="white"
+                title={t("Board.Analysis.BestMove")}
+                aria-label={t("Board.Analysis.BestMove")}
+              />
+            ) : (
+              <svg viewBox="0 0 100 100">
+                <title>{annotation}</title>
+                <defs>
+                  <filter id="shadow">
+                    <feDropShadow dx="0" dy="1" floodOpacity="0.3" stdDeviation="0" />
+                  </filter>
+                </defs>
+                <g>{glyphToSvg[annotation ?? ""]}</g>
+              </svg>
+            )}
           </Box>
         }
       </Box>

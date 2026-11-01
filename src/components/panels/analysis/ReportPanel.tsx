@@ -98,7 +98,12 @@ function ReportPanel() {
 type Stats = ReturnType<typeof getGameStats>;
 
 const GameStats = memo(
-  function GameStats({ whiteAnnotations, blackAnnotations }: Stats) {
+  function GameStats({
+    whiteAnnotations,
+    blackAnnotations,
+    whiteBestMoves,
+    blackBestMoves,
+  }: Stats) {
     const { t } = useTranslation();
 
     const store = useContext(TreeStateContext)!;
@@ -155,6 +160,28 @@ const GameStats = memo(
                 </React.Fragment>
               );
             })}
+          <React.Fragment key="best-move">
+            <Grid.Col
+              span={3}
+              style={{ textAlign: "center" }}
+              c={whiteBestMoves > 0 ? "green" : undefined}
+            >
+              {whiteBestMoves}
+            </Grid.Col>
+            <Grid.Col span={2} style={{ textAlign: "center", fontWeight: "bold" }} c="green">
+              ★
+            </Grid.Col>
+            <Grid.Col span={4} c={whiteBestMoves + blackBestMoves > 0 ? "green" : undefined}>
+              {t("Board.Analysis.BestMove")}
+            </Grid.Col>
+            <Grid.Col
+              span={3}
+              style={{ textAlign: "center" }}
+              c={blackBestMoves > 0 ? "green" : undefined}
+            >
+              {blackBestMoves}
+            </Grid.Col>
+          </React.Fragment>
         </Grid>
       </Paper>
     );
@@ -162,7 +189,9 @@ const GameStats = memo(
   (prev, next) => {
     return (
       equal(prev.whiteAnnotations, next.whiteAnnotations) &&
-      equal(prev.blackAnnotations, next.blackAnnotations)
+      equal(prev.blackAnnotations, next.blackAnnotations) &&
+      prev.whiteBestMoves === next.whiteBestMoves &&
+      prev.blackBestMoves === next.blackBestMoves
     );
   },
 );

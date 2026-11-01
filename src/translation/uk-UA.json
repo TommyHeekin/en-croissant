@@ -37,6 +37,7 @@
     "Board.Analysis.Analyze": "Аналізувати",
     "Board.Analysis.AnnotateNovelties": "Анотувати новинки",
     "Board.Analysis.AnnotateNovelties.Desc": "Додати коментар до першої позиції, якої немає в базі даних.",
+    "Board.Analysis.BestMove": "",
     "Board.Analysis.EnableWDL": "",
     "Board.Analysis.Endgame": "",
     "Board.Analysis.EngineRequired": "Потрібен движок",

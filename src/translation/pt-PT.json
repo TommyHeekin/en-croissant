@@ -37,6 +37,7 @@
     "Board.Analysis.Analyze": "Analisar",
     "Board.Analysis.AnnotateNovelties": "Anotar novidades",
     "Board.Analysis.AnnotateNovelties.Desc": "Adicionar comentário na primeira posição que não está na base de dados.",
+    "Board.Analysis.BestMove": "",
     "Board.Analysis.EnableWDL": "",
     "Board.Analysis.Endgame": "",
     "Board.Analysis.EngineRequired": "Necessário engine",

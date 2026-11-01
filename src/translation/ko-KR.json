@@ -37,6 +37,7 @@
     "Board.Analysis.Analyze": "분석",
     "Board.Analysis.AnnotateNovelties": "신수 주석",
     "Board.Analysis.AnnotateNovelties.Desc": "참조 데이터베이스에 없는 첫 번째 포지션에 주석을 추가합니다.",
+    "Board.Analysis.BestMove": "",
     "Board.Analysis.EnableWDL": "이 기능을 사용하려면 엔진 설정에서 UCI_ShowWDL을 활성화해야 합니다.",
     "Board.Analysis.Endgame": "엔드게임",
     "Board.Analysis.EngineRequired": "엔진이 필요합니다",

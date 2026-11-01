@@ -37,10 +37,27 @@
   );
 }
 
+.chessboard.bestMove
+  > :global(.cg-wrap)
+  > :global(cg-container)
+  > :global(cg-board)
+  > :global(square.last-move) {
+  background-color: color-mix(in srgb, var(--mantine-color-green-3) 50%, transparent) !important;
+}
+
 .chessboard
   > :global(.cg-wrap)
   > :global(cg-container)
   > :global(cg-board)
   > :global(square.current-premove) {
   background-color: rgba(20, 30, 85, 0.5) !important;
+}
+
+[data-mantine-color-scheme="dark"]
+  .chessboard.bestMove
+  > :global(.cg-wrap)
+  > :global(cg-container)
+  > :global(cg-board)
+  > :global(square.last-move) {
+  background-color: color-mix(in srgb, var(--mantine-color-green-8) 50%, transparent) !important;
 }

@@ -37,6 +37,7 @@
     "Board.Analysis.Analyze": "分析",
     "Board.Analysis.AnnotateNovelties": "註解新招",
     "Board.Analysis.AnnotateNovelties.Desc": "為第一個不在參考資料庫中的著手新增註解。",
+    "Board.Analysis.BestMove": "",
     "Board.Analysis.EnableWDL": "",
     "Board.Analysis.Endgame": "",
     "Board.Analysis.EngineRequired": "需要引擎",

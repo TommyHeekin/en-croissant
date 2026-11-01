@@ -37,6 +37,7 @@
     "Board.Analysis.Analyze": "分析",
     "Board.Analysis.AnnotateNovelties": "评注创新着法",
     "Board.Analysis.AnnotateNovelties.Desc": "为第一个不在参考数据库中的局面添加点评",
+    "Board.Analysis.BestMove": "",
     "Board.Analysis.EnableWDL": "您需要先在引擎设置中启用 UCI_ShowWDL 才能使用此功能！",
     "Board.Analysis.Endgame": "残局",
     "Board.Analysis.EngineRequired": "需要引擎",

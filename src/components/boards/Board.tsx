@@ -351,6 +351,8 @@ function Board({
   const [snapArrows] = useAtom(snapArrowsAtom);
   const showComments = useAtomValue(currentShowCommentsAtom);
   const visualAnnotation = showComments ? currentNode.annotations[0] : "";
+  const showBestMoveHint =
+    showComments && currentNode.isBestMove && currentNode.annotations.length === 0;
 
   const setBoardFen = useCallback(
     (fen: string) => {
@@ -434,7 +436,7 @@ function Board({
             gap="sm"
           >
             {showComments &&
-              currentNode.annotations.length > 0 &&
+              (currentNode.annotations.length > 0 || currentNode.isBestMove) &&
               currentNode.move &&
               square !== undefined && (
                 <Box pl="2.5rem" w="100%" h="100%" pos="absolute">
@@ -443,6 +445,7 @@ function Board({
                       orientation={orientation}
                       square={square}
                       annotation={currentNode.annotations[0]}
+                      bestMove={showBestMoveHint}
                     />
                   </Box>
                 </Box>
@@ -478,7 +481,9 @@ function Board({
                     }
                   : undefined
               }
-              className={`${classes.chessboard} ${is3d ? "is3d" : ""}`}
+              className={`${classes.chessboard} ${is3d ? "is3d" : ""} ${
+                showBestMoveHint ? classes.bestMove : ""
+              }`}
               ref={boardRef}
               onClick={() => {
                 eraseDrawablesOnClick && clearShapes();
