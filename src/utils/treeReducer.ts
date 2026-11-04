@@ -17,6 +17,7 @@ export interface TreeNode {
     fen: string;
     move: Move | null;
     san: string | null;
+    isBestMove?: boolean;
     children: TreeNode[];
     score: Score | null;
     depth: number | null;

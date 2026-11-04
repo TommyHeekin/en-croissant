@@ -1,7 +1,8 @@
 import { expect, test } from "vitest";
 import { ANNOTATION_INFO, type Annotation, NAG_INFO } from "../annotation";
-import { parseSquare } from "chessops";
-import { getMoveDestination, hasMorePriority, headersToPGN } from "../chess";
+import { parseSquare, parseUci } from "chessops";
+import { getGameStats, getMoveDestination, hasMorePriority, headersToPGN } from "../chess";
+import { createNode, defaultTree } from "../treeReducer";
 
 test("NAGs are consistent", () => {
     for (const k of Object.keys(ANNOTATION_INFO)) {
@@ -50,4 +51,30 @@ test("castling destination ignores a check or mate suffix", () => {
     expect(black("O-O")).toBe(parseSquare("g8"));
     expect(black("O-O+")).toBe(parseSquare("g8"));
     expect(getMoveDestination({ san: "Nf3+", halfMoves: 1, move: { from: 6, to: 21 } })).toBe(21);
+});
+
+test("game stats count best moves for each side, including moves with annotations", () => {
+    const tree = defaultTree();
+    const whiteMove = createNode({
+        fen: tree.root.fen,
+        move: parseUci("e2e4")!,
+        san: "e4",
+        halfMoves: 1,
+    });
+    whiteMove.isBestMove = true;
+    whiteMove.annotations = ["!"];
+    const blackMove = createNode({
+        fen: tree.root.fen,
+        move: parseUci("e7e5")!,
+        san: "e5",
+        halfMoves: 2,
+    });
+    blackMove.isBestMove = true;
+    whiteMove.children.push(blackMove);
+    tree.root.children.push(whiteMove);
+
+    const stats = getGameStats(tree.root);
+
+    expect(stats.whiteBestMoves).toBe(1);
+    expect(stats.blackBestMoves).toBe(1);
 });

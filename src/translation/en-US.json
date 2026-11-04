@@ -37,6 +37,7 @@
     "Board.Analysis.Analyze": "Analyze",
     "Board.Analysis.AnnotateNovelties": "Annotate Novelties",
     "Board.Analysis.AnnotateNovelties.Desc": "Add a comment to the first position that is not in the reference database.",
+    "Board.Analysis.BestMove": "Best move",
     "Board.Analysis.EnableWDL": "You have to enable UCI_ShowWDL in the engine settings to use this feature.",
     "Board.Analysis.Endgame": "Endgame",
     "Board.Analysis.EngineRequired": "Engine is required",

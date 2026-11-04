@@ -37,6 +37,7 @@
     "Board.Analysis.Analyze": "Analyser",
     "Board.Analysis.AnnotateNovelties": "Kommenter nye trekk",
     "Board.Analysis.AnnotateNovelties.Desc": "Legger til en kommentar for den første stillingen som ikke er i referansedatabasen.",
+    "Board.Analysis.BestMove": "",
     "Board.Analysis.EnableWDL": "",
     "Board.Analysis.Endgame": "",
     "Board.Analysis.EngineRequired": "Computer kreves",

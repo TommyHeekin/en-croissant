@@ -8,7 +8,7 @@ import { persist } from "zustand/middleware";
 import type { BestMoves, Outcome, Score } from "@/bindings";
 import { createDebouncedSessionStorage } from "./debouncedStorage";
 import { ANNOTATION_INFO, type Annotation } from "@/utils/annotation";
-import { getPGN } from "@/utils/chess";
+import { getPGN, uciNormalize } from "@/utils/chess";
 import { parseSanOrUci, positionFromFen } from "@/utils/chessops";
 import { isPrefix } from "@/utils/misc";
 import { getAnnotation } from "@/utils/score";
@@ -710,6 +710,15 @@ function addAnalysis(
     let parent: TreeNode | undefined;
 
     while (cur !== undefined && i < analysis.length) {
+        cur.isBestMove = false;
+        const bestMoveUci = analysis[i - 1]?.best[0]?.uciMoves[0];
+        if (parent && cur.move && bestMoveUci) {
+            const [parentPos] = positionFromFen(parent.fen);
+            if (parentPos) {
+                cur.isBestMove = uciNormalize(parentPos, cur.move) === bestMoveUci;
+            }
+        }
+
         const [pos] = positionFromFen(cur.fen);
         if (pos && !pos.isEnd() && analysis[i].best.length > 0) {
             cur.score = analysis[i].best[0].score;

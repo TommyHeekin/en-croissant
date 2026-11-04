@@ -37,6 +37,7 @@
     "Board.Analysis.Analyze": "Анализировать",
     "Board.Analysis.AnnotateNovelties": "Аннотировать новинки",
     "Board.Analysis.AnnotateNovelties.Desc": "Добавить комментарий в первой позиции, которая отсутствует в базе данных.",
+    "Board.Analysis.BestMove": "",
     "Board.Analysis.EnableWDL": "Чтобы использовать эту функцию, нужно включить UCI_ShowWDL в настройках движка.",
     "Board.Analysis.Endgame": "",
     "Board.Analysis.EngineRequired": "Требуется движок",

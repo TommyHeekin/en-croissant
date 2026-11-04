@@ -37,6 +37,7 @@
     "Board.Analysis.Analyze": "Analysieren",
     "Board.Analysis.AnnotateNovelties": "Neuerungen kommentieren",
     "Board.Analysis.AnnotateNovelties.Desc": "Füge dem ersten Zug, der nicht in der Referenzdatenbank ist, einen Kommentar hinzu.",
+    "Board.Analysis.BestMove": "",
     "Board.Analysis.EnableWDL": "",
     "Board.Analysis.Endgame": "Endspiel",
     "Board.Analysis.EngineRequired": "Engine ist erforderlich",

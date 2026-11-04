@@ -545,9 +545,11 @@ test("should handle addAnalysis", () => {
         position: [0],
         root: {
             ...treeE4D5().root,
+            isBestMove: false,
             children: [
                 {
                     ...treeE4D5().root.children[0],
+                    isBestMove: true,
                     score: {
                         value: {
                             type: "cp",
@@ -566,6 +568,31 @@ test("should handle addAnalysis", () => {
             },
         },
     });
+
+    store.getState().addAnalysis([
+        {
+            best: [
+                {
+                    depth: 1,
+                    multipv: 1,
+                    nodes: 1,
+                    score: { value: { type: "cp", value: 10 }, wdl: null },
+                    nps: 1000,
+                    sanMoves: ["e3"],
+                    uciMoves: ["e2e3"],
+                },
+            ],
+            novelty: false,
+            is_sacrifice: false,
+        },
+        {
+            best: [],
+            novelty: false,
+            is_sacrifice: false,
+        },
+    ]);
+
+    expect(store.getState().root.children[0].isBestMove).toBe(false);
 });
 
 test("should handle promoteVariation", () => {

@@ -591,6 +591,8 @@ export function getGameStats(root: TreeNode) {
         "!": 0,
         "!?": 0,
     };
+    let whiteBestMoves = 0;
+    let blackBestMoves = 0;
 
     if (root.children.length === 0) {
         return {
@@ -600,6 +602,8 @@ export function getGameStats(root: TreeNode) {
             blackAccuracy: 0,
             whiteAnnotations,
             blackAnnotations,
+            whiteBestMoves,
+            blackBestMoves,
         };
     }
 
@@ -615,6 +619,13 @@ export function getGameStats(root: TreeNode) {
     let node = root;
     while (node.children.length > 0) {
         node = node.children[0];
+        if (node.isBestMove) {
+            if (node.halfMoves % 2 === 1) {
+                whiteBestMoves++;
+            } else {
+                blackBestMoves++;
+            }
+        }
         for (const annotation of node.annotations) {
             if (isBasicAnnotation(annotation)) {
                 if (node.halfMoves % 2 === 1) {
@@ -643,6 +654,8 @@ export function getGameStats(root: TreeNode) {
         blackAccuracy,
         whiteAnnotations,
         blackAnnotations,
+        whiteBestMoves,
+        blackBestMoves,
     };
 }
 

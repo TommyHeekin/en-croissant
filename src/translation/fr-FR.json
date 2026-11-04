@@ -37,6 +37,7 @@
     "Board.Analysis.Analyze": "Analyser",
     "Board.Analysis.AnnotateNovelties": "Annoter les nouveautés",
     "Board.Analysis.AnnotateNovelties.Desc": "Ajoute un commentaire au premier coup qui n'est pas dans la base de données de référence.",
+    "Board.Analysis.BestMove": "",
     "Board.Analysis.EnableWDL": "Vous devez activer UCI_ShowWDL dans les paramètres du moteur pour utiliser cette fonctionnalité.",
     "Board.Analysis.Endgame": "Finale",
     "Board.Analysis.EngineRequired": "Un moteur est nécessaire",
